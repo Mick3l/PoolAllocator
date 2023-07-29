@@ -24,9 +24,9 @@ TEST(FunctionalityTestSuite, ChangeTypeTemplateTest) {
     mtl::PoolAllocator<double> allocator1(allocator);
     auto array = allocator1.allocate(50);
     for (int i = 0; i < 50; ++i) {
-        array[i] = static_cast<double>(i) / 30.l;
+        array[i] = static_cast<double>(i) / 30.;
     }
-    ASSERT_EQ(array[49], 49.l / 30.l);
+    ASSERT_EQ(array[49], 49. / 30.);
 }
 
 TEST(FunctionalityTestSuite, ConfigTest) {
@@ -37,7 +37,7 @@ TEST(FunctionalityTestSuite, ConfigTest) {
 }
 
 TEST(PerformanceTestSuite, ListTest) {
-    int STD_allocator, Pool_allocator;
+    long STD_allocator, Pool_allocator;
     mtl::PoolAllocator<int> poolAllocator(1e6, 24);
     //testing standard allocator
     {
@@ -66,7 +66,7 @@ TEST(PerformanceTestSuite, ListTest) {
 }
 
 TEST(PerformanceTestSuite, RandomAllocationsTest) {
-    int STD_allocator, Pool_allocator;
+    long STD_allocator, Pool_allocator;
     mtl::PoolAllocator<std::byte> poolAllocator(800'000, 200, 2, 10'000'000);
     std::allocator<std::byte> STDAllocator;
     //testing standard allocator

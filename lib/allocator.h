@@ -120,10 +120,10 @@ namespace mtl {
         count = 1;
         const auto root = nlohmann::json::parse(std::ifstream(config));
         if (!root.contains("pools")) {
-            throw std::format_error("unvalid config");
+            throw std::runtime_error("unvalid config");
         }
-        for (int i = 0; i < root["pools"].size(); ++i) {
-            pool_list.emplace_back(root["pools"][i * 2], root["pools"][i * 2 + 1]);
+        for (int i = 0; i < root["pools"].size() - 1; ++i) {
+            pool_list.emplace_back(root["pools"][i], root["pools"][i + 1]);
         }
     }
 

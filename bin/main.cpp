@@ -13,9 +13,6 @@ using namespace mtl;
 
 
 int main() {
-    PoolAllocator<int> p(10, 1000);
-    int* arr = p.allocate(200);
-    arr[199] = 241;
-    cout << arr[199];
+
     return 0;
 }
